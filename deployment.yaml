@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discovery-deployment
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: discovery-deployment
+  template:
+    metadata:
+      labels:
+        app: discovery-deployment
+    spec:
+      containers:
+        - name: discovery-service
+          image: discovery-service-image
+          ports:
+            - containerPort: 80
